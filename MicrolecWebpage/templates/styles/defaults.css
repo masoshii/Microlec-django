@@ -1,0 +1,12 @@
+main {
+    background-color: rgb(232, 232, 232);
+    overflow-y: hidden;
+    overflow-x: hidden;
+    color: black;
+    margin-bottom: -160px;
+}
+
+main::after {
+    content: "";
+    display: block;
+}

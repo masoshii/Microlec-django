@@ -1,0 +1,146 @@
+main {
+    padding-bottom: 161px;
+}
+
+.names-data {
+    width: 400px !important;
+}
+
+#commentid {
+    resize: none;
+}
+
+#contact-title {
+    margin-top: 50px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 30px;
+    color: rgb(6, 58, 0);
+}
+
+#contact-sub {
+    font-size: 20px;
+    margin-bottom: 100px;
+    color: rgb(42, 42, 42);
+}
+
+#contact-form-container {
+    background-color: white;
+    box-shadow: 10px 10px 10px -9px rgba(0,0,0,0.40);
+}
+
+#contact-image {
+    max-height: 500px;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#lname-name-group input, #email-group input {
+    background-color: rgb(236, 236, 236);
+    border: 1px solid rgb(236, 236, 236);
+    width: 102%;
+}
+
+#lname-name-group {
+    margin-right: 20px;
+}
+
+#contact-form-container {
+    width: 60%;
+}
+
+#contact-form {
+    margin-top: 25%;
+}
+
+#comment-group textarea {
+    background-color: rgb(236, 236, 236);
+    border: 1px solid rgb(236, 236, 236);
+    height: 100px;
+}
+
+#submit-btn {
+    background-color: white;
+    color: rgb(63, 185, 63);
+    border: 1px solid rgb(63, 185, 63);
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 10%;
+    transition: 0.3s;
+}
+
+#submit-btn:hover {
+    background-color: rgb(63, 185, 63);
+    color: white;
+}
+
+.form-group {
+    position: relative !important;
+}
+.error-msg {
+    font-size: 20px;
+    color: rgb(192, 56, 56);
+    opacity: 0;
+}
+
+@media (min-width: 2000px){
+    #contact-image {
+        max-height: 1200px;
+        width: auto;
+    }
+    #contact-title {
+        font-size: 60px;
+    }
+    #contact-sub {
+        font-size: 35px;
+        margin-left: 30%;
+    }
+    #contact-image {
+        max-height: 930px;
+        width: auto;
+    }
+    #contact-form-container {
+        width: 100%;
+    }
+    
+    #lname-name-group input {
+        font-size: 30px;
+    }
+
+    #email-group input {
+        font-size: 30px;
+    }
+    
+    #comment-group textarea {
+        font-size: 30px;
+        height: 200px !important;
+    }
+
+    #submit-btn {
+        font-size: 30px;
+    }
+    
+    #warn-msg {
+        font-size: 24px;
+    }
+    .error-label {
+        font-size: 20px;
+    }
+    .invalid-feedback {
+        font-size: 25px !important;
+    }
+    #cancel-btn, #confirm-btn {
+        font-size: 30px;
+    }
+    .modal-dialog {
+        margin-right: 40vw !important;
+    }
+    
+    .modal-title {
+        font-size: 60px;
+    }
+    
+    .modal-body {
+        font-size: 30px;
+    }
+}
