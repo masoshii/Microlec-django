@@ -148,7 +148,7 @@ function showElementByCookie(cookieMap, productQuantity){
       var column1 = document.createElement('div');
       column1.setAttribute('class', 'col-md-2');
       column1.innerHTML = `
-        <img src="resources/products/${product.image}" alt="Test Alt" class="product-item-image">
+        <img src="../static/resources/products/${product.image}" alt="Test Alt" class="product-item-image">
       `;
       itemContainer.appendChild(column1);
 
