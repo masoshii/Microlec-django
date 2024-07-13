@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management Testing</title>
+</head>
+<body>
+    <h1>Add a product</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="addproduct_name" placeholder="Product Name" required>
+        <input type="text" name="addproduct_brand" placeholder="Product Brand" required>
+        <input type="text" name="addproduct_stock" placeholder="Product Stock" required>
+        <input type="text" name="addproduct_price" placeholder="Product Price" required>
+        <button type="submit" name="addproduct_form">Add Product to DB</button>
+    </form>
+    <h1>Delete a product</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="deleteproduct_id" placeholder="Product ID" required>
+        <button type="submit" name="deleteproduct_form">Delete Product from DB</button>
+    </form>
+    <h1>Add a new brand</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="addbrand_name" placeholder="Brand Name" required>
+        <button type="submit" name="addbrand_form">Add new brand</button>
+    </form>
+    <h1>Delete a brand</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="deletebrand_id" placeholder="Brand ID" required>
+        <button type="submit" name="deletebrand_form">Delete Brand from DB</button>
+    </form>
+</body>
+</html>

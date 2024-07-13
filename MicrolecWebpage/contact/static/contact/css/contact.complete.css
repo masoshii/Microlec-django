@@ -1,0 +1,13 @@
+.success-desc {
+    margin-left: 5px !important;
+}
+
+.success-inv {
+
+    margin-left: -5px !important;
+}
+
+#content-container {
+
+   padding-bottom: 50vh;
+}

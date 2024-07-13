@@ -34,9 +34,9 @@ def index(request):
             
             try:
                 new_data_insert = ContactModel(
-                    name_contact = name,
-                    lastnames_contact = lastnames,
-                    email_contact = email,
+                    name_contact = name.upper(),
+                    lastnames_contact = lastnames.upper(),
+                    email_contact = email.lower(),
                     comment_contact = comment,
                     timestamp_contact = timezone.now(),
                     ip_contact = ip
@@ -47,16 +47,12 @@ def index(request):
             except Exception as e:
                 return HttpResponse(f"Se han encontrado los siguientes errores a la hora de ingresar los datos en el sistema: {e}")
 
-            return HttpResponse(f'Se envio con los siguientes datos: {name}, {lastnames}, {email}, {comment}, {ip}')
+            return redirect('success')
         else:
             for field in form:
                 print("Field Error:", field.name,  field.errors)
+            return HttpResponse('Tipos de campo incorrectos.')
     return render(request, 'contact.html')
 
-def allcontact(request):
-
-
-    contact_list = ContactModel.objects.all()
-    data = list(contact_list.values())
-
-    return JsonResponse(data, safe=False)
+def success(request):
+    return render(request, 'contact.complete.html')
