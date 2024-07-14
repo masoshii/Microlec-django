@@ -1,5 +1,8 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from rest_framework import serializers
 from django.db import models
+import hashlib
+import os
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -20,12 +23,13 @@ class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     names = models.CharField(max_length=255)
     lnames = models.CharField(max_length=255)
+    run = models.CharField(max_length=255, unique=True)
     salt = models.CharField(max_length=32, blank=True)
     password_hash = models.CharField(max_length=64, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    usermanager_object = UserManager()
+    objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
@@ -36,11 +40,12 @@ class User(AbstractBaseUser):
         super(User, self).save(*args, **kwargs)
 
     def generate_salt(self):
-        import os
         return os.urandom(16).hex()
 
     def set_password(self, raw_password):
-        import hashlib
         self.salt = self.generate_salt()
         self.password_hash = hashlib.sha256((self.salt + raw_password).encode()).hexdigest()
+    
+    def check_password(self, raw_password):
+        return self.password_hash == hashlib.sha256((self.salt + raw_password).encode()).hexdigest()
 

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'contact',
     'product_management',
     'user_management',
+    'accounts',
 ]
 
 MIDDLEWARE = [
