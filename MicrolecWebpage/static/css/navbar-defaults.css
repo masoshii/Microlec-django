@@ -194,14 +194,25 @@
 }
 
 
+#search-form input{
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+}
+
+#search-form button {
+    width: 100px;
+    height: 50px;
+    bottom: 10px;
+    font-size: 20px;
+}
+
 @media (min-width: 576px) {
     #sidebar-show {
         display: none;
     }
 }
 
-
-/*NO TOCAR - Mobile*/
 @media (max-width: 576px) {
     .navbar-brand img {
         display: inline-block;
