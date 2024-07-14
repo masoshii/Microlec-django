@@ -20,7 +20,11 @@
     color: rgb(30, 70, 19);
 }
 
-#email-input, #password-input, #repeat-password-input {
+#names-input {
+    margin-left: 30% !important;
+}
+
+#email-input, #password-input, #repeat-password-input, #names-input, #lnames-input, #run-input {
     width: 70%;
     height: 60px;
     font-size: 25px;
@@ -29,14 +33,14 @@
     border-bottom: 1px solid rgb(32, 32, 32);
 }
 
-#email-input:focus, #password-input:focus, #repeat-password-input:focus {
+#email-input:focus, #password-input:focus, #repeat-password-input:focus, #names-input:focus, #lnames-input:focus, #run-input:focus {
     outline: none;
 }
 
 .error-msg {
     color: red;
     position: absolute;
-    opacity: 0;
+    opacity: 0; /*cambiar*/
 }
 
 #forgot-password {
@@ -44,12 +48,12 @@
     margin-top: 20px;
 }
 
-#email-input-label, #password-input-label, #repeat-password-input-label {
+#email-input-label, #password-input-label, #repeat-password-input-label, #names-input-label, #lnames-input-label, #run-input-label {
     margin-left: 28%;
     font-size: 30px;
 }
 
-#password-input-label, #repeat-password-input-label{
+#password-input-label, #repeat-password-input-label, #email-input-label{
     margin-top: 20px;
 }
 
@@ -59,7 +63,7 @@
     margin-bottom: 200px;
 }
 
-#login-submit {
+#register-submit {
     width: 30%;
     height: 60px;
     border: 1px solid rgb(72, 149, 56);
@@ -72,12 +76,12 @@
     margin-bottom: 50px;
 }
 
-#login-submit:hover {
+#register-submit:hover {
     background-color: rgb(59, 97, 52);
     border: 1px solid rgb(59, 97, 52);
 }
 
-#login-submit:active {
+#register-submit:active {
     background-color: rgb(108, 186, 92);
     border: 1px solid rgb(108, 186, 92);
 }

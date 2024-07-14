@@ -1,8 +1,5 @@
 $(document).ready(function() {
     $(document).on('click', '#login-submit', function( e ){
-        e.preventDefault;
-
-        var isInvalid = false;
         var emailValue = $('#email-input').val();
         var pwdValue = $('#password-input').val();
 
@@ -10,26 +7,20 @@ $(document).ready(function() {
             $('#weird-email').css('opacity', '0');
             $('#email-emsg').css('opacity', '1');
             $('#email-input').css('border-bottom', '1px solid red');
-            isInvalid = true;
+            e.preventDefault();
         }
         
         if(!isEmailValid(emailValue) && !isBlank(emailValue)){
             $('#email-emsg').css('opacity', '0');
             $('#weird-email').css('opacity', '1');
             $('#email-input').css('border-bottom', '1px solid red');
-            isInvalid = true;
+            e.preventDefault();
         }
         
         if(isBlank(pwdValue)){
             $('#password-emsg').css('opacity', '1');
             $('#password-input').css('border-bottom', '1px solid red');
-            isInvalid = true;
-        }
-        
-        if(!isInvalid){
-            $('#email-input').val('');
-            $('#password-input').val('');
-            location.reload();
+            e.preventDefault();
         }
     });
     $(document).on('input', '.form-control', function(){

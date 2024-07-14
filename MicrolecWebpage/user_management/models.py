@@ -1,5 +1,4 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from rest_framework import serializers
 from django.db import models
 import hashlib
 import os

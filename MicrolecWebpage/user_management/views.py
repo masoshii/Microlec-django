@@ -50,7 +50,7 @@ def usermgr(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('usermgr')
+    return redirect('index')
 
 
 

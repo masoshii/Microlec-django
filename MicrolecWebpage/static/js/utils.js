@@ -2,8 +2,8 @@ $(document).ready(function() {
   if (readCookie("cart_items") == null) {
     document.cookie = "cart_items=; expires=Fri, 31 Dec 2100 12:00:00 UTC; path=/";
   }
+ 
 });
-
 function isEmailValid(emailString){
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|net|cl|ar|co|uy|uk|pe|br|bo)$/;
     return emailRegex.test(emailString);
@@ -229,4 +229,66 @@ function removeElementsByClass(className){
 
 function isBlank(str) {
   return (!str || /^\s*$/.test(str));
+}
+
+function isRunValid(run) {
+  run = String(run);
+  
+  if (run.length < 9 || run.length > 10) {
+      return false;    
+  }
+
+  let parts = run.split('-');
+
+  if (parts.length !== 2) {
+      return false;
+  }
+
+  let nodv_run = parts[0];
+  let dv_run = parts[1];
+
+  if (!/^\d+$/.test(dv_run)) {
+    if (dv_run.toUpperCase() !== 'K') {
+      return false;
+    } else {
+      dv_run = 10;
+    }
+  } else {
+    dv_run = parseInt(dv_run);
+    if (dv_run === 0) {
+      dv_run = 11;
+    }
+  }
+  
+  let nodv_run_str;
+  try {
+      nodv_run = parseInt(nodv_run);
+      nodv_run_str = String(nodv_run);
+  } catch (error) {
+      return false;
+  }
+  
+  let inverted_run = nodv_run_str.split('').reverse().join('');
+
+  let total_sum = 0;
+  let factor = 2;
+  for (let index = 0; index < inverted_run.length; index++) {
+      let char = inverted_run[index];
+      let value = parseInt(char) * factor;
+      total_sum += value;
+      factor++;
+      if (factor > 7) {
+          factor = 2;
+      }
+  }
+  
+  let differencenum = Math.trunc(total_sum/11);
+  differencenum = differencenum * 11;
+  let real_dvrun = total_sum-differencenum;
+  real_dvrun = 11-real_dvrun;
+  
+  if (dv_run === real_dvrun){
+    return true
+  }
+  return false;
 }

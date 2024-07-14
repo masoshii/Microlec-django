@@ -34,7 +34,7 @@
                     <div class="form-group row justify-content-center">
                         <div class="row justify-content-center">
                             <label for="email-input" id="email-input-label">Correo Electrónico</label>
-                            <input type="email" placeholder="ejemplo@dominio.com" id="email-input" class="form-control" name="email_field" required>
+                            <input type="text" placeholder="ejemplo@dominio.com" id="email-input" class="form-control" name="email_field" required>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-1">
@@ -60,11 +60,11 @@
                     </div>
                 </form>
                 {% if error %}
-                    <p style="color: red;">{{ error }}</p>
+                    <p style="color: red; font-size: 20px;" class="text-center justify-content-center">{{ error }}</p>
                 {% endif %}
             </div>
             <div class="row text-center">
-                <p id="no-acc">¿No tienes cuenta? <a href="register.html">¡Únetenos!</a></p>
+                <p id="no-acc">¿No tienes cuenta? <a href="{% url 'register' %}">¡Únetenos!</a></p>
             </div>
         </div>
     </main>
@@ -72,7 +72,7 @@
     <script src="{% static 'js/jquery-3.7.1.min.js.js' %}"></script>
     <script src="{% static 'js/nav_scripts.js' %}"></script>
     <script src="{% static 'js/init-cookie.js' %}"></script>
-    {% comment %} <script src="{% static 'accounts/js/login.js' %}"></script> {% endcomment %}
+    <script src="{% static 'accounts/js/login.js' %}"></script>
     <script src="{% static 'js/utils.js' %}"></script>
 </body>
 </html>
