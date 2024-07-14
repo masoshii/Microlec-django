@@ -207,6 +207,34 @@
     font-size: 20px;
 }
 
+.cart-ico {
+    margin-right: 100px !important;
+}
+
+#login-item i {
+    font-size: 60px;
+}
+
+#cart-item i {
+    font-size: 55px;
+}
+
+#usernames {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+#profile-container:hover {
+    cursor: pointer;
+    color: #4ed142;
+}
+
+#profile-container:hover i {
+    cursor: pointer;
+    color: #4ed142;
+}
+
+
 @media (min-width: 576px) {
     #sidebar-show {
         display: none;
@@ -246,6 +274,7 @@
         max-width: 500px;
         height: auto;
     }
+    
 }
 
 @media (min-width: 2000px){
@@ -264,12 +293,7 @@
         bottom: 10px;
         font-size: 30px;
     }
-    #cart-item i {
-        font-size: 55px;
-    }
-    #login-item i {
-        font-size: 60px;
-    }
+    
     .subnav-item button {
         font-size: 40px;
     }
