@@ -1,11 +1,17 @@
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import include, path
 
 urlpatterns = [
-    path('contact/', include('contact.urls')),
-    path('cart/', include('cart.urls')),
-    path('productmgr/', include('product_management.urls')),
-    path('usermgr/', include('user_management.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('', include('index.urls')),
+    path('contact/', include('contact.urls'), name='contact'),
+    path('cart/', include('cart.urls'), name='cart'),
+    path('productmgr/', include('product_management.urls'), name='productmgr'),
+    path('usermgr/', include('user_management.urls'), name='usermgr'),
+    path('accounts/', include('accounts.urls'), name='accounts'),
+    path('category/', include('category.urls'), name='category'),
+    path('', include('index.urls'), name='index'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

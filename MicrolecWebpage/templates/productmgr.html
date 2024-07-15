@@ -7,12 +7,13 @@
 </head>
 <body>
     <h1>Add a product</h1>
-    <form method="post">
+    <form method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         <input type="text" name="addproduct_name" placeholder="Product Name" required>
         <input type="text" name="addproduct_brand" placeholder="Product Brand" required>
         <input type="text" name="addproduct_stock" placeholder="Product Stock" required>
         <input type="text" name="addproduct_price" placeholder="Product Price" required>
+        <input type="file" accept="image/*" name="addproduct_image" required>
         <button type="submit" name="addproduct_form">Add Product to DB</button>
     </form>
     <h1>Delete a product</h1>
@@ -33,5 +34,34 @@
         <input type="text" name="deletebrand_id" placeholder="Brand ID" required>
         <button type="submit" name="deletebrand_form">Delete Brand from DB</button>
     </form>
+    <h1>Add a new category</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="addcategory_name" placeholder="Category Name" required>
+        <button type="submit" name="addcategory_form">Add new category</button>
+    </form>
+    <h1>Delete a category</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="deletecategory_id" placeholder="Category ID" required>
+        <button type="submit" name="deletecategory_form">Delete Category from DB</button>
+    </form>
+    <h1>Add Category to a Product</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="addcategoryproduct_cid" placeholder="Category ID" required>
+        <input type="text" name="addcategoryproduct_pid" placeholder="Product ID" required>
+        <button type="submit" name="addcategoryproduct_form">Add category to product</button>
+    </form>
+    <h1>Remove Category from Product</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="removecategoryproduct_cid" placeholder="Category ID" required>
+        <input type="text" name="removecategoryproduct_pid" placeholder="Product ID" required>
+        <button type="submit" name="removecategoryproduct_form">Remove category from product</button>
+    </form>
+    {% if message %}
+        <p style="color: black; font-size: 20px;">{{ message }}</p>
+    {% endif %}
 </body>
 </html>

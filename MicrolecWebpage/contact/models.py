@@ -8,6 +8,7 @@ class ContactModel(models.Model):
     comment_contact = models.TextField(null=False, max_length=2000)
     timestamp_contact = models.DateTimeField(null=False)
     ip_contact = models.CharField(null=False, max_length=15, default=0)
+    is_resolved = models.BooleanField(default=False)
 
     def __str__(self):
         return self.email_contact

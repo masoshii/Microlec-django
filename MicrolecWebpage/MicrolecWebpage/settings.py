@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'product_management',
     'user_management',
     'accounts',
+    'category',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,6 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 365
 SESSION_SAVE_EVERY_REQUEST = True
 
 AUTH_USER_MODEL = 'user_management.User'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

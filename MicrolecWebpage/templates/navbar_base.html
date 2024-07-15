@@ -5,50 +5,67 @@
             <button id="sidebar-show" type="button" onclick="sManager()">
                 <i class="bi bi-list h2"></i>
             </button>
-            <a href="/" class="navbar-brand"> <!--Logo-->
-                <img src="{% static 'resources/brand.svg' %}" class="img-fluid" style="max-height: 200px;">
+            <a href="{% url 'index' %}" class="navbar-brand"> <!--Logo-->
+                <img src="{% static 'resources/brand.svg' %}"
+                     class="img-fluid"
+                     alt="Navbar Brand" height="" width="">
             </a>
             <!---->
-            <form class="justify-content-center needs-validation" id="search-form" novalidate>
-                <input type="form-control input-lg" type="search" id="search-form-input" placeholder="Buscar productos..." aria-label="Search" required>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit-btn__search-form">Buscar</button>
+            <form class="justify-content-center needs-validation"
+                  id="search-form"
+                  novalidate>
+                <input type="form-control input-lg search"
+                       id="search-form-input"
+                       placeholder="Buscar productos..."
+                       aria-label="Search"
+                       required>
+                <button class="btn btn-outline-success my-2 my-sm-0"
+                        type="submit"
+                        id="submit-btn__search-form">Buscar</button>
             </form>
-
             <div id="main-nav-items" class="justify-content-right">
                 <ul class="navbar-nav">
                     <li class="navbar-item" id="cart-item">
-                        <span class="icon-container" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Carro">
-                            <a href="/cart/" class="nav-link nav-ico cart-ico" >
+                        <span class="icon-container"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="bottom"
+                              title="Carro">
+                            <a href="{% url 'cart' %}" class="nav-link nav-ico cart-ico">
                                 <i class="bi bi-cart h4"></i>
                             </a>
                         </span>
                     </li>
                     {% if user.is_authenticated %}
-                    <div class="container">
-
-                        <div class="row" id="profile-container">
-                            <li class="navbar-items align-self-center col" id="logged-usernames">
-                                <p style="margin-bottom: 0px;" id="usernames">{{ user.names }} {{ user.lnames }}</p>
-                                <p id="run">{{ user.run }}</p>
-                            </li>
-                            <li class="navbar-item col" id="login-item">
-                                <span class="icon-container" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil">
+                        <div class="container">
+                            <div class="row" id="profile-container">
+                                <li class="navbar-items align-self-center col" id="logged-usernames">
+                                    <p id="usernames">{{ user.names }} {{ user.lnames }}</p>
+                                    <p id="run">{{ user.run }}</p>
+                                </li>
+                                <li class="navbar-item col" id="login-item">
+                                    <span class="icon-container"
+                                          data-bs-toggle="tooltip"
+                                          data-bs-placement="bottom"
+                                          title="Perfil">
                                         <i class="bi bi-person h3"></i>
-                                </span>
-                                <div id="profile-menu" class="profile-menu">
-                                    <ul class="text-left align-self-start justify-content-start">
-                                    </ul>
-                                </div>
-                            </li>
+                                    </span>
+                                    <div id="profile-menu" class="profile-menu">
+                                        <ul class="text-left align-self-start justify-content-start">
+                                        </ul>
+                                    </div>
+                                </li>
+                            </div>
+                            <div class="row">
+                                <a href="{% url 'logout' %}">Cerrar Sesion</a>
+                            </div>
                         </div>
-                        <div class="row">
-                            <a href="{% url 'logout' %}" >Cerrar Sesion</a>
-                        </div>
-                    </div>
                     {% else %}
                         <li class="navbar-item" id="login-item">
-                            <span class="icon-container" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Perfil">
-                                <a href="/accounts/login" class="nav-link nav-ico">
+                            <span class="icon-container"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="bottom"
+                                  title="Perfil">
+                                <a href="{% url 'login' %}" class="nav-link nav-ico">
                                     <i class="bi bi-person h3"></i>
                                 </a>
                             </span>
@@ -58,110 +75,181 @@
             </div>
         </div>
     </nav>
-        <div class="container-fluid navbar-sub" id="navbar-items">
-            <div class="row">
-                <div class="col-3 text-center border-right border-white subnav-item">
-                    <div class="dropdown-center">
-                        <button class="btn-block subnav-btn dropdown-toggle" type="button" id="circuitos-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
-                            Circuitos
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="circuitos-dropdown">
-                            <ul>
-                                <li><a class="dropdown-item" href="">Elemento 1</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 2</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 3</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 4</a></li>
-                            </ul>
-                            
-                        </div>
+    <div class="container-fluid navbar-sub" id="navbar-items">
+        <div class="row">
+            <div class="col-3 text-center border-right border-white subnav-item">
+                <div class="dropdown-center">
+                    <button class="btn-block subnav-btn dropdown-toggle"
+                            type="button"
+                            id="circuitos-dropdown"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            disabled>Circuitos</button>
+                    <div class="dropdown-menu" aria-labelledby="circuitos-dropdown">
+                        <ul>
+                            <li>
+                                <a class="dropdown-item" href="">Placas</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Herramientas</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Componentes Electrónicos</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href=""></a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="col-3 text-center subnav-item">
-                    <div class="dropdown-center">
-                        <button class="btn-block subnav-btn dropdown-toggle" type="button" id="circuitos-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
-                            Componentes
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="componentes-dropdown">
-                            <ul>
-                                <li><a class="dropdown-item" href="">Elemento 1</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 2</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 3</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 4</a></li>
-                            </ul>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3 text-center subnav-item">
-                    <div class="dropdown-center">
-                        <button class="btn-block subnav-btn dropdown-toggle" type="button" id="circuitos-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
-                            Computación
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="computacion-dropdown">
-                            <ul>
-                                <li><a class="dropdown-item" href="">Elemento 1</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 2</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 3</a></li>
-                                <li><a class="dropdown-item" href="">Elemento 4</a></li>
-                            </ul>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3 text-center subnav-item" id="contact-form-link">
-                    <a href="contact" id="contact-btn">¡Contáctanos!&nbsp</a>
-                    <i class="bi bi-box-arrow-up-right"></i>
                 </div>
             </div>
+            <div class="col-3 text-center subnav-item">
+                <div class="dropdown-center">
+                    <button class="btn-block subnav-btn dropdown-toggle"
+                            type="button"
+                            id="circuitos-dropdown"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            disabled>Componentes</button>
+                    <div class="dropdown-menu" aria-labelledby="componentes-dropdown">
+                        <ul>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 1</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 2</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 3</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 text-center subnav-item">
+                <div class="dropdown-center">
+                    <button class="btn-block subnav-btn dropdown-toggle"
+                            type="button"
+                            id="circuitos-dropdown"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            disabled>Computación</button>
+                    <div class="dropdown-menu" aria-labelledby="computacion-dropdown">
+                        <ul>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 1</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 2</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 3</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="">Elemento 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 text-center subnav-item" id="contact-form-link">
+                <a href="{% url 'contact' %}" id="contact-btn">¡Contáctanos!&nbsp</a>
+                <i class="bi bi-box-arrow-up-right"></i>
+            </div>
         </div>
-        <div class="collapse" id="sidebar-list-mobile">
-            <ul id="sidebar-items">
-                <li class="sidebar-item sidebar-item-main"><a href="login.html"><i class="bi bi-person h3"></i>&nbspCuenta</a></li>
-                <li class="sidebar-item sidebar-item-main" id="carro-mobile"><a href="cart/"><i class="bi bi-cart h4 "></i>&nbspCarro</a></li>
-                <li><hr class="solid sidebar-sep"></li>
-                <li><h3 class="sidebar-item">Categorías</h3></li>
-                <li class="sidebar-item">
-                    <div class="btn-group dropend">
-                        <button type="button" class="dropdown-item btn subnav-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Circuitos&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Elemento 1</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 2</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 3</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 4</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="sidebar-item">
-                    <div class="btn-group dropend">
-                        <button type="button" class="dropdown-item btn subnav-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Componentes
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Elemento 1</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 2</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 3</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 4</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="sidebar-item">
-                    <div class="btn-group dropend">
-                        <button type="button" class="dropdown-item btn subnav-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Computación&nbsp
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Elemento 1</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 2</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 3</a></li>
-                            <li><a class="dropdown-item" href="#">Elemento 4</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><hr class="solid sidebar-sep"></li>
-                <li class="sidebar-item"><a href="contact">¡Contáctanos!&nbsp <i class="bi bi-box-arrow-up-right"></i></a>
-                </li>
-            </ul>
-        </div>
+    </div>
+    <div class="collapse" id="sidebar-list-mobile">
+        <ul id="sidebar-items">
+            <li class="sidebar-item sidebar-item-main">
+                <a href="{% url 'login' %}"><i class="bi bi-person h3"></i>&nbspCuenta</a>
+            </li>
+            <li class="sidebar-item sidebar-item-main" id="carro-mobile">
+                <a href="{% url 'cart' %}"><i class="bi bi-cart h4 "></i>&nbspCarro</a>
+            </li>
+            <li>
+                <hr class="solid sidebar-sep">
+            </li>
+            <li>
+                <h3 class="sidebar-item">Categorías</h3>
+            </li>
+            <li class="sidebar-item">
+                <div class="btn-group dropend">
+                    <button type="button"
+                            class="dropdown-item btn subnav-btn dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">Circuitos&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 1</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 2</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 3</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar-item">
+                <div class="btn-group dropend">
+                    <button type="button"
+                            class="dropdown-item btn subnav-btn dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">Componentes</button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 1</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 2</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 3</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar-item">
+                <div class="btn-group dropend">
+                    <button type="button"
+                            class="dropdown-item btn subnav-btn dropdown-toggle"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">Computación&nbsp</button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 1</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 2</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 3</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Elemento 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <hr class="solid sidebar-sep">
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'contact' %}">¡Contáctanos!&nbsp <i class="bi bi-box-arrow-up-right"></i></a>
+            </li>
+        </ul>
+    </div>
 </header>

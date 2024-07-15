@@ -21,13 +21,14 @@ class Product(models.Model):
     stock_product = models.IntegerField(null=False)
     price_product = models.IntegerField(null=False)
     timestamp_product = models.DateTimeField(null=False)
+    image_product = models.ImageField(upload_to='products/', null=True, blank=True)
 
     def __str__(self):
         return self.name_product
 
 class Product_Category(models.Model):
     id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    id_brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    id_category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.id_product
