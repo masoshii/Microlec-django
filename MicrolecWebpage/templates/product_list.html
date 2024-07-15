@@ -73,9 +73,12 @@
                                         <i class="fa fa-star star"></i>
                                         <i class="fa fa-star star"></i>
                                     </div>
-                                    <button type="button" class="btn bg-cart">
-                                        <i class="fa fa-cart-plus mr-2"></i> Añadir al carro
-                                    </button>
+                                    <form action="{% url 'add_to_cart' product_id=product.id_product %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn bg-cart" name="add_to_cart_button">
+                                            <i class="fa fa-cart-plus mr-2"></i> Añadir al carro
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
