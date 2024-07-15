@@ -4,7 +4,7 @@
     <!--Config-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Microlec | Carro</title>
+    <title>Microlec | Carro ({{ total_quantity }})</title>
     {% load static %}
     <link rel="shortcut icon" href="{% static 'resources/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" type='text/css' href="{% static 'cart/css/cart.css' %}">
@@ -34,9 +34,42 @@
         </div>
         <div class="row mx-auto justify-content-center">
             <div class="col-6" id="product-list">
-                <div class="row text-center" id="no-items">
-                    <h2>¡No hay productos que mostrar!</h2>
-                </div>
+                {% if user_products %}
+                    {% for user_product in user_products %}
+                        <div class="row product-item" id="prod-{{ user_product.id_product.id_product }}">
+                            <div class="col-md-2 d-flex justify-content-center align-items-center "> <!--Column 1: Product Image-->
+                                <img src="{{ user_product.id_product.image_product.url }}" alt="Test Alt" class="product-item-image">
+                            </div>
+                            <div class="col-md-5 align-self-end"> <!--Column 2: Product title, Delete from cart-->
+                                <div class="row">
+                                    <p class="product-item-brand">{{ user_product.id_product.id_brand.name_brand }}</p>
+                                </div>
+                                <div class="row">
+                                    <p class="product-item-name">{{ user_product.id_product.name_product }}</p>
+                                </div>
+                                <div class="row">
+                                    <a class="product-item-delete" href="{% url 'remove_from_cart' product_id=user_product.id_product.id_product %}">Eliminar del Carro</a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 align-self-center"> <!--Column 3: Product Quantity-->
+                                <div class="row">
+                                    <input type="number" name="quantity" class="product-quantity-select" id="quantity-{{ user_product.id_product.id_product }}" min="1" max="{{ user_product.id_product.stock_product }}" value="{{ user_product.quantity }}">
+                                </div>
+                            </div>
+                            <div class="col-md-3 align-self-center"> <!--Column 4: Product Price-->
+                                <div class="row">
+                                    <p style="font-size: 20px;" class="product-price">${{ user_product.id_product.price_product }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row product-sep"></div>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                    <div class="row text-center" id="no-items">
+                        <h2>¡No hay productos que mostrar!</h2>
+                    </div>
+                {% endif %}
             </div>
             <div class="col-6" id="product-summary">
                 <div class="row">
@@ -51,10 +84,10 @@
                 </div>
                 <div class="row">
                     <div class="col-9">
-                        <h4 id="product-qtitle">Productos (0):</h4>
+                        <h4 id="product-qtitle">Productos ({{ total_quantity }}):</h4>
                     </div>
                     <div class="col-3">
-                        <h4 id="product-qvalue">$0</h4>
+                        <h4 id="product-qvalue">${{ allproducts_price }}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -75,7 +108,7 @@
                         <h4 id="tship-title">Envío:</h4>
                     </div>
                     <div class="col-3">
-                        <h4 id="tship-value">$0</h4>
+                        <h4 id="tship-value">${{ shipping_price }}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -83,7 +116,7 @@
                         <h4 id="tproduct-title">Total:</h4>
                     </div>
                     <div class="col-3">
-                        <h4 id="tproduct-value">$0</h4>
+                        <h4 id="tproduct-value">${{ total_price }}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -125,8 +158,34 @@
         }
     </script>
     <script src="{% static 'js/jquery-3.7.1.min.js.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('input[name="quantity"]').on('change', function() {
+                var productId = $(this).attr('id').split('-')[1];
+                var newQuantity = $(this).val();
+                $.ajax({
+                    url: '/cart/update_quantity/' + productId + '/',
+                    type: 'POST',
+                    data: {
+                        'new_quantity': newQuantity,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            location.reload();
+                            console.log('Cantidad actualizada exitosamente');
+                        } else {
+                            console.error('Error al actualizar la cantidad');
+                        }
+                    },
+                    error: function() {
+                        alert('Error al actualizar la cantidad.');
+                    }
+                });
+            });
+        });
+    </script>
     <script src="{% static 'js/nav_scripts.js' %}"></script>
-    <script src="{% static 'js/init-cookie.js' %}"></script>
     <script src="{% static 'cart/js/cart.js' %}"></script>
     <script src="{% static 'js/utils.js' %}"></script>
 </body>

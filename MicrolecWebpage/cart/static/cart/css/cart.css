@@ -3,6 +3,7 @@
     scroll-snap-stop: normal !important;
     overscroll-behavior: unset !important;
     scroll-behavior: unset !important;
+    margin-right: 0px !important;
 }
 
 .container, header, footer, .container-fluid, body, div, span, section {
@@ -160,6 +161,7 @@
 .product-item-image {
     margin-left: -12px;
     max-height: 141px;
+    max-width: 141px;
     width: auto;
 }
 

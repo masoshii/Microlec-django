@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from product_management.models import Product, Product_Category, Brand, Category
 from django.contrib.auth.decorators import login_required
 
-@login_required
 def product_list(request, category_name):
     category = Category.objects.get(name_category=category_name)
     

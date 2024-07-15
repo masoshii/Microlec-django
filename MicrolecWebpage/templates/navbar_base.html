@@ -25,17 +25,18 @@
             </form>
             <div id="main-nav-items" class="justify-content-right">
                 <ul class="navbar-nav">
-                    <li class="navbar-item" id="cart-item">
-                        <span class="icon-container"
-                              data-bs-toggle="tooltip"
-                              data-bs-placement="bottom"
-                              title="Carro">
-                            <a href="{% url 'cart' %}" class="nav-link nav-ico cart-ico">
-                                <i class="bi bi-cart h4"></i>
-                            </a>
-                        </span>
-                    </li>
+                    
                     {% if user.is_authenticated %}
+                        <li class="navbar-item" id="cart-item">
+                            <span class="icon-container"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="bottom"
+                                title="Carro">
+                                <a href="{% url 'cart' %}" class="nav-link nav-ico cart-ico">
+                                    <i class="bi bi-cart h4"></i>
+                                </a>
+                            </span>
+                        </li>
                         <div class="container">
                             <div class="row" id="profile-container">
                                 <li class="navbar-items align-self-center col" id="logged-usernames">
