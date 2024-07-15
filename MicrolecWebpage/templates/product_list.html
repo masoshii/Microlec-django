@@ -43,216 +43,53 @@
               rel="stylesheet">
     </head>
     <body>
-        <div id="darken-bg" onclick="closeOnClick()"></div>
         {% include "navbar_base.html" %}
         <div class="container d-flex justify-content-center mt-50 mb-50">
             <div class="row">
-                <div class="col-md-4 mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-actions">
-                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-                                     class="card-img img-fluid"
-                                     width="96"
-                                     height="350"
-                                     alt="">
+                {% if products %}
+                    {% for product in products %}
+                        <div class="col-md-4 mt-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-img-actions">
+                                        <img src="{{ product.image_product.url }}"
+                                                class="card-img img-fluid"
+                                                width="96"
+                                                height="350"
+                                                alt="">
+                                    </div>
+                                </div>
+                                <div class="card-body bg-light text-center">
+                                    <div class="mb-2">
+                                        <h6 class="font-weight-semibold mb-2">
+                                            <a href="#" class="text-default mb-2" data-abc="true">{{ product.name_product }}</a>
+                                        </h6>
+                                        <a href="#" class="text-muted" data-abc="true">{{ product.id_brand.name_brand }}</a>
+                                    </div>
+                                    <h3 class="mb-0 font-weight-semibold">${{ product.price_product }}</h3>
+                                    <div>
+                                        <i class="fa fa-star star"></i>
+                                        <i class="fa fa-star star"></i>
+                                        <i class="fa fa-star star"></i>
+                                        <i class="fa fa-star star"></i>
+                                    </div>
+                                    <button type="button" class="btn bg-cart">
+                                        <i class="fa fa-cart-plus mr-2"></i> Añadir al carro
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body bg-light text-center">
-                            <div class="mb-2">
-                                <h6 class="font-weight-semibold mb-2">
-                                    <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD & 8GB RAM</a>
-                                </h6>
-                                <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
-                            </div>
-                            <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                            <div>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                            </div>
-                            <div class="text-muted mb-3">34 reviews</div>
-                            <button type="button" class="btn bg-cart">
-                                <i class="fa fa-cart-plus mr-2"></i> Add to cart
-                            </button>
-                        </div>
-                    </div>
+                    {% endfor %}
+                {% else %}
+                <div class="col-md-12 text-center noproducts">
+                    <h1 class="display-1">Error!</h1>
+                    <p class="display-5">No hay productos disponibles en esta categoría.</p>
+                    <br>
+                    <h5 class="display-6"><a href="{% url 'index' %}">Volver a la pagina principal</a></h5>
                 </div>
-                <div class="col-md-4 mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-actions">
-                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-                                     class="card-img img-fluid"
-                                     width="96"
-                                     height="350"
-                                     alt="">
-                            </div>
-                        </div>
-                        <div class="card-body bg-light text-center">
-                            <div class="mb-2">
-                                <h6 class="font-weight-semibold mb-2">
-                                    <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD & 8GB RAM</a>
-                                </h6>
-                                <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
-                            </div>
-                            <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                            <div>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                            </div>
-                            <div class="text-muted mb-3">34 reviews</div>
-                            <button type="button" class="btn bg-cart">
-                                <i class="fa fa-cart-plus mr-2"></i> Add to cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-actions">
-                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-                                     class="card-img img-fluid"
-                                     width="96"
-                                     height="350"
-                                     alt="">
-                            </div>
-                        </div>
-                        <div class="card-body bg-light text-center">
-                            <div class="mb-2">
-                                <h6 class="font-weight-semibold mb-2">
-                                    <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD & 8GB RAM</a>
-                                </h6>
-                                <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
-                            </div>
-                            <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                            <div>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                            </div>
-                            <div class="text-muted mb-3">34 reviews</div>
-                            <button type="button" class="btn bg-cart">
-                                <i class="fa fa-cart-plus mr-2"></i> Add to cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-actions">
-                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-                                     class="card-img img-fluid"
-                                     width="96"
-                                     height="350"
-                                     alt="">
-                            </div>
-                        </div>
-                        <div class="card-body bg-light text-center">
-                            <div class="mb-2">
-                                <h6 class="font-weight-semibold mb-2">
-                                    <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD & 8GB RAM</a>
-                                </h6>
-                                <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
-                            </div>
-                            <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                            <div>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                            </div>
-                            <div class="text-muted mb-3">34 reviews</div>
-                            <button type="button" class="btn bg-cart">
-                                <i class="fa fa-cart-plus mr-2"></i> Add to cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-actions">
-                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-                                     class="card-img img-fluid"
-                                     width="96"
-                                     height="350"
-                                     alt="">
-                            </div>
-                        </div>
-                        <div class="card-body bg-light text-center">
-                            <div class="mb-2">
-                                <h6 class="font-weight-semibold mb-2">
-                                    <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD & 8GB RAM</a>
-                                </h6>
-                                <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
-                            </div>
-                            <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                            <div>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                            </div>
-                            <div class="text-muted mb-3">34 reviews</div>
-                            <button type="button" class="btn bg-cart">
-                                <i class="fa fa-cart-plus mr-2"></i> Add to cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-actions">
-                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-                                     class="card-img img-fluid"
-                                     width="96"
-                                     height="350"
-                                     alt="">
-                            </div>
-                        </div>
-                        <div class="card-body bg-light text-center">
-                            <div class="mb-2">
-                                <h6 class="font-weight-semibold mb-2">
-                                    <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD & 8GB RAM</a>
-                                </h6>
-                                <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a>
-                            </div>
-                            <h3 class="mb-0 font-weight-semibold">$250.99</h3>
-                            <div>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                                <i class="fa fa-star star"></i>
-                            </div>
-                            <div class="text-muted mb-3">34 reviews</div>
-                            <button type="button" class="btn bg-cart">
-                                <i class="fa fa-cart-plus mr-2"></i> Add to cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <div class="secretdiv"></div>
+                {% endif %}
             </div>
-        </div>
-        <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                    <a href="?page=1">first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-                <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
-                {% endif %}
-            </span>
         </div>
         {% include "footer_base.html" %}
         <script src="{% static 'js/jquery-3.7.1.min.js.js' %}"></script>
@@ -262,21 +99,4 @@
         <script src="{% static 'js/utils.js' %}"></script>
     </body>
 </html>
-{% comment %} <h1>Products in {{ category.name_category }}</h1>
-    
-        <div>
-            <a href="?orderby=name_product&direction=asc">Order by Name (A-Z)</a> | 
-            <a href="?orderby=name_product&direction=desc">Order by Name (Z-A)</a> |
-            <a href="?orderby=price_product&direction=asc">Order by Price (Low to High)</a> | 
-            <a href="?orderby=price_product&direction=desc">Order by Price (High to Low)</a> |
-            <a href="?orderby=timestamp_product&direction=asc">Order by Date (Old to New)</a> | 
-            <a href="?orderby=timestamp_product&direction=desc">Order by Date (New to Old)</a> |
-            <a href="?orderby=id_brand__name_brand&direction=asc">Order by Brand (A-Z)</a> |
-            <a href="?orderby=id_brand__name_brand&direction=desc">Order by Brand (Z-A)</a>
-        </div>
-        
-        <ul>
-            {% for product in products %}
-                <li>{{ product.name_product }} - {{ product.price_product }} - {{ product.timestamp_product }}</li>
-            {% endfor %}
-</ul> {% endcomment %}
+

@@ -46,8 +46,10 @@ body {
 }
 
 .card-img{
-
     width: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    object-fit: cover;
 }
 
 .star{
@@ -73,6 +75,11 @@ body {
     
     color:#fff;
 }
+
+.secretdiv {
+    padding-bottom: 40%;
+}
+
 
 a{
 
