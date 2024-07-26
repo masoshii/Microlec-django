@@ -58,7 +58,7 @@ def register_view(request):
                         error_message = "Este RUN ya esta registrado."
                 else:
                     error_message = 'Un error inesperado ha ocurrido, intentelo de nuevo mas tarde.'
-                return render(request, 'usermgr.html', {'error': error_message})
+                return render(request, 'register.html', {'error': error_message})
             except Exception as e:
                 return render(request, 'register.html', {'error': f'Se han encontrado los siguientes errores a la hora de ingresar los datos enviados: {e}'})
         else:

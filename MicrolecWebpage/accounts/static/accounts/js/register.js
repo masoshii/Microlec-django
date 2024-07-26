@@ -11,7 +11,6 @@ $(document).ready(function() {
             $('#weird-email').css('opacity', '0');
             $('#email-emsg').css('opacity', '1');
             $('#email-input').css('border-bottom', '1px solid red');
-            alert('1')
             e.preventDefault();
         }
         
@@ -19,34 +18,29 @@ $(document).ready(function() {
             $('#email-emsg').css('opacity', '0');
             $('#weird-email').css('opacity', '1');
             $('#email-input').css('border-bottom', '1px solid red');
-            alert('2')
             e.preventDefault();
         }
         
         if(isBlank(pwdValue)){
             $('#password-emsg').css('opacity', '1');
             $('#password-input').css('border-bottom', '1px solid red');
-            alert('3')
             e.preventDefault();
         }
 
         if(isBlank(repValue) || pwdValue != repValue){
             $('#repeat-password-emsg').css('opacity', '1');
             $('#repeat-password-input').css('border-bottom', '1px solid red');
-            alert('4')
             e.preventDefault();
         }
 
         if(isBlank(namesValue)){
             $('#names-emsg').css('opacity', '1');
             $('#names-input').css('border-bottom', '1px solid red');
-            alert('5')
             e.preventDefault();
         }
         if(isBlank(lnamesValue)){
             $('#lnames-emsg').css('opacity', '1');
             $('#lnames-input').css('border-bottom', '1px solid red');
-            alert('6')
             e.preventDefault();
         }
 
@@ -54,7 +48,6 @@ $(document).ready(function() {
             $('#weird-run').css('opacity', '0');
             $('#run-emsg').css('opacity', '1');
             $('#run-input').css('border-bottom', '1px solid red');
-            alert('7')
             e.preventDefault();
         }
         
@@ -62,7 +55,6 @@ $(document).ready(function() {
             $('#run-emsg').css('opacity', '0');
             $('#weird-run').css('opacity', '1');
             $('#run-input').css('border-bottom', '1px solid red');
-            alert('8')
             e.preventDefault();
         }
 
